@@ -1,0 +1,131 @@
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./app/resources/sass/app.scss ***!
+  \**********************************************************************************************************************/
+/*
+    app.scss
+*/
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-strike {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.chat-strike-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.chat-strike-online {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  padding-top: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid #0c5d0e;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #74ff70;
+  font-family: "Courier Prime", "Courier New", monospace;
+}
+
+.chat-strike-content {
+  position: relative;
+  width: 98%;
+  height: 81%;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Courier Prime", "Courier New", monospace;
+}
+
+.chat-style-spec {
+  color: #ffffff;
+}
+
+.chat-style-t {
+  color: #ff4040;
+}
+
+.chat-style-ct {
+  color: #96c8ff;
+}
+
+.chat-style-notice {
+  color: #ffd000;
+}
+
+.chat-strike-actions {
+  position: absolute;
+  bottom: 0;
+  left: -2px;
+  width: 100%;
+}
+
+.chat-strike-actions-message {
+  position: relative;
+  width: 100%;
+}
+
+.chat-input-element {
+  padding: 10px;
+  background-color: rgba(62, 70, 55, 0.45);
+  border: 1px solid #7c8c70;
+  color: #ffd000;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 8px;
+  outline: none;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+}
+
+.chat-strike-actions-message input {
+  width: 97%;
+}
+
+.chat-strike-actions-settings {
+  position: relative;
+  width: 100%;
+}
+
+.chat-strike-actions-settings input {
+  width: 67%;
+}
+@media screen and (max-width: 399px) {
+  .chat-strike-actions-settings input {
+    width: 65.9%;
+  }
+}
+.chat-strike-actions-settings input {
+  padding: 5px;
+}
+
+.chat-strike-actions-settings select {
+  width: 30%;
+  padding: 5px;
+  float: right;
+}
+
+.chat-strike-actions-settings select option {
+  background-color: rgba(0, 0, 0, 0.5);
+}
