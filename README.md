@@ -73,11 +73,11 @@ Toggle timestamps for chat or check timestamps status
 
 The recommended way to install the project is using Docker.
 
-**WARNING: Codeberg does not have a container registry, so you have to build the image yourself!**
+**WARNING: Currently you have to build the image yourself!**
 
 1. Clone the repository
     ```bash
-    git clone https://codeberg.org/danielbrendel/chat-strike.git
+    git clone https://github.com/danielbrendel/chat-strike.git
     ```
 
 2. Edit your prefered settings in the `docker-compose.yml`
