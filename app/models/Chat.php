@@ -35,12 +35,20 @@ class Chat extends \Asatru\Database\Model {
                 throw new \Exception('Empty names are not allowed.');
             }
 
+            if (Filter::check($username, 'username')) {
+                throw new \Exception('The given name is not allowed.');
+            }
+
             if (empty($team)) {
                 throw new \Exception('Please join a team before chatting.');
             }
 
             if (empty($message)) {
                 throw new \Exception('Empty messages are not allowed.');
+            }
+
+            if (Filter::check($message, 'message')) {
+                throw new \Exception('Your message contains unwanted tokens.');
             }
 
             $untaken = static::raw('SELECT * FROM `@THIS` WHERE username = ? AND token <> ? ORDER BY id DESC LIMIT 10', [
