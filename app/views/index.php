@@ -7,6 +7,16 @@
 				<div class="chat-strike-content"></div>
 
 				<div class="chat-strike-actions">
+					<div class="chat-strike-options">
+						<div class="chat-strike-options-item" onclick="window.switchBackground();">
+							<img src="{{ asset('img/icons/switchbg.png') }}" alt="icon"/>
+						</div>
+
+						<div class="chat-strike-options-item" onclick="window.localCommand('/sound ' + ((window.soundEnable) ? 'off' : 'on'));">
+							<img id="chat-strike-option-sound" src="{{ asset('img/icons/sound_on.png') }}" alt="icon"/>
+						</div>
+					</div>
+
 					<div class="chat-strike-actions-message">
 						<form onsubmit="event.preventDefault(); window.chatMessage(); this.children[0].value = '';">
 							<input class="chat-input-element" type="text" placeholder="Enter a message..."/>

@@ -203,9 +203,9 @@ window.netChatMessage = function(user, team, msg) {
 
 window.chatMessage = function() {
     const parent = document.querySelector('.chat-strike-actions');
-    const msg = parent.children[0].children[0].children[0].value;
-    const user = parent.children[1].children[0].value;
-    const team = parent.children[1].children[1].value;
+    const msg = parent.children[1].children[0].children[0].value;
+    const user = parent.children[2].children[0].value;
+    const team = parent.children[2].children[1].value;
 
     window.currentChatMessage = msg;
     window.currentUsername = user;
@@ -371,6 +371,11 @@ window.localCommand = function(expression) {
             if (sndUpdate) {
                 localStorage.setItem('s_enable', window.soundEnable);
                 window.addNoticeMessage('Sound is now: ' + ((window.soundEnable) ? 'On' : 'Off'));
+
+                let sndIcon = document.querySelector('#chat-strike-option-sound');
+                if (sndIcon) {
+                    sndIcon.src = window.location.origin + '/img/icons/sound_' + ((window.soundEnable) ? 'on' : 'off') + '.png';
+                }
             }
 
             return true;
@@ -453,6 +458,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.soundEnable = parseInt(window.soundEnable);
     } else {
         window.soundEnable = 1;
+    }
+
+    let sndIcon = document.querySelector('#chat-strike-option-sound');
+    if (sndIcon) {
+        sndIcon.src = window.location.origin + '/img/icons/sound_' + ((window.soundEnable) ? 'on' : 'off') + '.png';
     }
 
     if (window.showTimestamps !== null) {

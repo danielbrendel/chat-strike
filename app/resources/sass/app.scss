@@ -159,3 +159,25 @@ html, body {
     position: relative;
     margin-bottom: 5px;
 }
+
+.chat-strike-options {
+    position: absolute;
+    top: -42px;
+    right: 10px;
+}
+
+.chat-strike-options-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.chat-strike-options-item:hover {
+    transform: scale(1.2);
+}
+
+.chat-strike-options-item img {
+    width: 25px;
+    height: 25px;
+}
