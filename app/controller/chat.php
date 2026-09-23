@@ -93,6 +93,31 @@ class ChatController extends BaseController {
 	}
 
     /**
+	 * Handles URL: /chat/users
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function users($request)
+	{
+		try {
+            $users = Activity::users();
+
+            Activity::hit();
+
+            return json([
+                'code' => 200,
+                'users' => $users
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+	}
+
+    /**
 	 * Handles URL: /chat/clear
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

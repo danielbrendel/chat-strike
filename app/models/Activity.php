@@ -38,4 +38,31 @@ class Activity extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function users()
+    {
+        try {
+            $result = [];
+
+            $tokens = static::raw('SELECT * FROM `@THIS` WHERE updated_at >= NOW() - INTERVAL 5 MINUTE');
+            if (!$tokens) {
+                return $result;
+            }
+
+            foreach ($tokens as $token) {
+                $chat = Chat::raw('SELECT * FROM `Chat` WHERE token = ? ORDER BY id DESC LIMIT 1', [$token->get('token')])->first();
+                if ($chat) {
+                    $result[] = $chat->get('username');
+                }
+            }
+
+            return $result;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

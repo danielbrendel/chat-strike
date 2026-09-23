@@ -255,6 +255,23 @@ window.onlineCount = function() {
     });
 };
 
+window.onlineUsers = function() {
+    window.ajaxRequest('post', window.location.origin + '/chat/users', {}, function(response) {
+        if (response.code == 200) {
+            let elem = document.querySelector('.chat-strike-list');
+            if (elem) {
+                elem.innerHTML = '';
+
+                for (let i = 0; i < response.users.length; i++) {
+                    elem.innerHTML += `<div class="chat-strike-list-item">${response.users[i]}</div>`;
+                }
+            }
+        } else {
+            window.addNoticeMessage('Error: ' + response.msg);
+        }
+    });
+};
+
 window.findRadioCommand = function(token) {
     for (let i = 0; i < window.radioCommands.length; i++) {
         if (window.radioCommands[i].audio === token) {
@@ -456,11 +473,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.onlineCount();
     }, window.chatOnlineDelay);
 
+    window.usersTimer = setInterval(function() {
+        window.onlineUsers();
+    }, window.chatOnlineDelay);
+
     setTimeout(function() {
         window.fetchMessages();
     }, 100);
 
     setTimeout(function() {
         window.onlineCount();
+    }, 100);
+
+    setTimeout(function() {
+        window.onlineUsers();
     }, 100);
 });

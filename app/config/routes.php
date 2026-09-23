@@ -20,6 +20,7 @@ return [
     array('/chat/message', 'POST', 'chat@message'),
     array('/chat/fetch', 'POST', 'chat@fetch'),
     array('/chat/online', 'ANY', 'chat@online'),
+    array('/chat/users', 'ANY', 'chat@users'),
     array('/chat/clear', 'ANY', 'chat@clear'),
     array('$404', 'ANY', 'error404@index')
 ];
