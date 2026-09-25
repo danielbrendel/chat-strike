@@ -158,6 +158,8 @@ window.addChatMessage = function(user, message, team, style) {
             if (window.lastMessageId !== null) {
                 window.playAudio(item.audio + '.wav');
             }
+        } else {
+            window.listRadioCommands();
         }
     } else if (message.content.startsWith('/speak ')) {
         const phrase = message.content.substr(message.content.indexOf(' ') + 1);
@@ -280,6 +282,14 @@ window.findRadioCommand = function(token) {
     }
 
     return null;
+};
+
+window.listRadioCommands = function() {
+    window.addNoticeMessage('List of available radio commands:');
+
+    for (let i = 0; i < window.radioCommands.length; i++) {
+        window.addNoticeMessage(window.radioCommands[i].audio + ' -> ' + window.radioCommands[i].message)
+    }
 };
 
 window.speakText = function(text) {
