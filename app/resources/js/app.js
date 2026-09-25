@@ -355,6 +355,8 @@ window.localCommand = function(expression) {
         if (expression === 'switchbg') {
             window.switchBackground();
 
+            window.addNoticeMessage('Changed background image');
+
             return true;
         } else if (expression.indexOf('leet ') === 0) {
             const msg = window.leetspeak(expression.substr(expression.indexOf(' ') + 1));
@@ -408,6 +410,11 @@ window.localCommand = function(expression) {
             if (tmUpdate) {
                 localStorage.setItem('cl_timestamps', window.showTimestamps);
                 window.addNoticeMessage('Timestamps are now: ' + ((window.showTimestamps) ? 'On' : 'Off'));
+
+                let tsIcon = document.querySelector('#chat-strike-option-timestamps');
+                if (tsIcon) {
+                    tsIcon.src = window.location.origin + '/img/icons/timestamps_' + ((window.showTimestamps) ? 'on' : 'off') + '.png';
+                }
             }
 
             return true;
@@ -479,6 +486,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.showTimestamps = parseInt(window.showTimestamps);
     } else {
         window.showTimestamps = 0;
+    }
+
+    let tsIcon = document.querySelector('#chat-strike-option-timestamps');
+    if (tsIcon) {
+        tsIcon.src = window.location.origin + '/img/icons/timestamps_' + ((window.showTimestamps) ? 'on' : 'off') + '.png';
     }
 
     const rndnum = window.random(0, window.welcomeMessages.length - 1);

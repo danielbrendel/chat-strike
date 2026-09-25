@@ -8,7 +8,11 @@
 
 				<div class="chat-strike-actions">
 					<div class="chat-strike-options">
-						<div class="chat-strike-options-item" onclick="window.switchBackground();">
+						<div class="chat-strike-options-item" onclick="window.localCommand('/timestamps ' + ((window.showTimestamps) ? 'off' : 'on'));">
+							<img id="chat-strike-option-timestamps" src="{{ asset('img/icons/timestamps_on.png') }}" alt="icon"/>
+						</div>
+
+						<div class="chat-strike-options-item" onclick="window.localCommand('/switchbg');">
 							<img src="{{ asset('img/icons/switchbg.png') }}" alt="icon"/>
 						</div>
 
