@@ -100,7 +100,7 @@ html, body {
 .chat-strike-actions {
     position: absolute;
     bottom: 0;
-    left: -2px;
+    left: 0;
     width: 100%;
 }
 
@@ -133,7 +133,8 @@ html, body {
 }
 
 .chat-strike-actions-settings input {
-    width: 67%;
+    position: relative;
+    width: 68.5%;
     @media screen and (max-width: 399px) {
         width: 65.9%;
     }
@@ -141,9 +142,10 @@ html, body {
 }
 
 .chat-strike-actions-settings select {
+    position: absolute;
     width: 30%;
+    right: 1px;
     padding: 5px;
-    float: right;
 }
 
 .chat-strike-actions-settings select option {

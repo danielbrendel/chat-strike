@@ -13,8 +13,6 @@
 
 Chat-Strike is a simple retro chat-box that you can self-host and embed into a web project (using an iframe). Think of it as a live updated shoutbox that revives the nostalgic gaming times of the old Counter-Strike 1.6 days.
 
-<img src="public/chat-strike-example.png" alt="screenshot"/>
-
 Note: This is not designed to be directly opened in your browser, but rather to be embedded into your own web project. It will adjust to your iframe / parent container elements in order to keep being responsive. The screenshot shows an example usage in one of my own web projects.
 
 ## Features
@@ -25,7 +23,9 @@ Note: This is not designed to be directly opened in your browser, but rather to 
 - Send leetspeak text
 - Switch teams (CT, T, SPEC)
 - View online count
+- View online users
 - Toggle sound
+- Switch backgrounds
 - Responsive design
 - Basic docker setup
 
