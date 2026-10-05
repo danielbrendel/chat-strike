@@ -1,4 +1,23 @@
-# SayText Chat
+<h1 align="center">
+    SayText Chat
+</h1>
+
+<p align="center">
+    Chat like you're playing CS 1.6 again<br/>
+    (C) 2026 by Daniel Brendel<br/>
+    <a href="https://www.danielbrendel.com">www.danielbrendel.com</a>
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/web-php-green" alt="web-php"/>
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="license-mit"/>
+    <img src="https://img.shields.io/badge/nostalgia-yes-orange" alt="nostalgia-yes"/>
+    <img src="https://img.shields.io/badge/maintained-yes-violet" alt="maintained-yes"/>
+</p>
+
+<p align="center">
+    <img src="public/img/preview.png" />
+</p>
 
 ## Table of contents
 
@@ -11,9 +30,7 @@
 
 ## Description
 
-SayText Chat is a simple retro chat-box that you can self-host and embed into a web project (using an iframe). Think of it as a live updated shoutbox that revives the nostalgic gaming times of the old Counter-Strike 1.6 days.
-
-Note: This is not designed to be directly opened in your browser, but rather to be embedded into your own web project. It will adjust to your iframe / parent container elements in order to keep being responsive. The screenshot shows an example usage in one of my own web projects.
+SayText Chat is a simple self-hostable retro chat app that revives the feeling of playing oldschool CS 1.6.
 
 ## Features
 
@@ -105,10 +122,7 @@ The recommended way to install the project is using Docker.
 
     **Hint:** You can always change your settings in the `docker-compose.yml` and rerun step 5. You don't need to rebuild the image all the time.
 
-6. Embed in your own web project using an iframe.
-    ```html
-    <iframe src="your-url-goes-here"></iframe>
-    ```
+6. The app should now be available on [http://localhost:8080](http://localhost:8080).
 
 ## Available settings
 
