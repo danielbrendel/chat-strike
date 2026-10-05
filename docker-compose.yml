@@ -9,8 +9,8 @@ services:
       - app_logs:/var/www/html/app/logs
       - app_migrate:/var/www/html/app/migrations
     environment:
-      APP_SERVERNAME: "Testserver"
-      APP_SERVERTOPIC: "Welcome to ${APP_SERVERTOPIC}"
+      APP_SERVERNAME: ""
+      APP_SERVERTOPIC: ""
       APP_SERVERPREVIEW: ""
       APP_DELAY_FETCH: 10000
       APP_DELAY_ONLINE: 10000
