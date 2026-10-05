@@ -9,12 +9,12 @@ services:
       - app_logs:/var/www/html/app/logs
       - app_migrate:/var/www/html/app/migrations
     environment:
-      APP_SERVERNAME: ""
-      APP_SERVERTOPIC: ""
-      APP_SERVERPREVIEW: ""
+      APP_SERVERNAME: "SayText Chat Server"
+      APP_SERVERTOPIC: "Welcome to this SayText Chat server"
+      APP_SERVERPREVIEW: "preview.png"
       APP_DELAY_FETCH: 10000
       APP_DELAY_ONLINE: 10000
-      APP_RESOURCEHOST: ""
+      APP_RESOURCEHOST: "https://resources.saytextchat.com"
       APP_TIMEZONE: "UTC"
       LOG_ENABLE: 1
       DB_HOST: db

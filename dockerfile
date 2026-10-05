@@ -31,6 +31,7 @@ RUN apt-get update \
         unzip \
         git \
         default-mysql-client \
+        wget \
         tzdata \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \

@@ -110,32 +110,26 @@ wait_for_db() {
     echo "Database is available."
 }
 
-# Function to download assets if not already exists
+# Function to download and extract asset package
+install_asset_package() {
+    local package=$1
+    local destination=$2
+
+    local checkcnt=$(find $(pwd)/public/$destination -maxdepth 1 -type f | wc -l)
+    if [ "$checkcnt" -le 1 ]; then
+        echo "Downloading and extracting $package..."
+
+        wget -O $package "$APP_RESOURCEHOST/$package"
+        unzip $package -d $(pwd)/public/$destination
+    fi
+}
+
+# Function to download all assets if not already exist
 download_assets() {
     if [ -n "$APP_RESOURCEHOST" ]; then
-        $bgcount=$(find $(pwd)/public/img/backgrounds -maxdepth 1 -type f | wc -l)
-        if [ "$bgcount" -gt 1 ]; then
-            echo "Downloading and extracting assets_backgrounds.zip..."
-
-            wget -O assets_backgrounds.zip "$APP_RESOURCEHOST/assets_background.zip"
-            unzip assets_backgrounds.zip -d $(pwd)/public/img/backgrounds
-        fi
-
-        $iccount=$(find $(pwd)/public/img/icons -maxdepth 1 -type f | wc -l)
-        if [ "$iccount" -gt 1 ]; then
-            echo "Downloading and extracting assets_icons.zip..."
-
-            wget -O assets_icons.zip "$APP_RESOURCEHOST/assets_icons.zip"
-            unzip assets_icons.zip -d $(pwd)/public/img/icons
-        fi
-
-        $sndcount=$(find $(pwd)/public/snd -maxdepth 1 -type f | wc -l)
-        if [ "$sndcount" -gt 1 ]; then
-            echo "Downloading and extracting assets_sounds.zip..."
-
-            wget -O assets_sounds.zip "$APP_RESOURCEHOST/assets_sounds.zip"
-            unzip assets_sounds.zip -d $(pwd)/public/snd
-        fi
+        install_asset_package "assets_backgrounds.zip" "img/backgrounds"
+        install_asset_package "assets_icons.zip" "img/icons"
+        install_asset_package "assets_sounds.zip" "snd"
     fi
 }
 

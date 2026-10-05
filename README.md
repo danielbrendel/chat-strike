@@ -27,6 +27,7 @@
 - [Installation](#installation)
 - [Available settings](#available-settings)
 - [License](#license)
+- [Disclaimer](#disclaimer)
 
 ## Description
 
@@ -95,34 +96,22 @@ The recommended way to install the project is using Docker.
 
 1. Clone the repository
     ```bash
-    git clone https://github.com/danielbrendel/saytext-chat.git
+    git clone https://github.com/danielbrendel/saytext-chat
     ```
 
 2. Edit your prefered settings in the `docker-compose.yml`
 
-3. Copy the required assets to their belonging directories (or specify `APP_RESOURCEHOST` for automatical deployment):
-    - Background images: `/public/img/backgrounds`
-    - Icon assets: `/public/img/icons`
-    - Sound files: `/public/snd` and `/public/snd/voice`
-
-4. Build the image
+3. Pull the image
     ```bash
-    docker buildx build . --platform linux/amd64 --tag danielbrendel/saytext-chat:latest --load
+    docker compose pull
     ```
 
-    **Note:** Choose your platform depending on your environment:
-    - linux/arm/v7
-    - linux/arm64/v8
-    - linux/amd64
-
-5. Launch all containers
+4. Launch all containers
     ```bash
     docker compose up -d
     ```
 
-    **Hint:** You can always change your settings in the `docker-compose.yml` and rerun step 5. You don't need to rebuild the image all the time.
-
-6. The app should now be available on [http://localhost:8080](http://localhost:8080).
+5. The app should now be available on [http://localhost:8080](http://localhost:8080).
 
 ## Available settings
 
@@ -130,12 +119,12 @@ This section covers all available app settings with default values.
 
 | Setting  | Description | Default |
 | ------------- | ------------- | ----- |
-| APP_SERVERNAME  | Set your prefered chat server name  | - |
-| APP_SERVERTOPIC  | Set your prefered chat server topic  | - |
-| APP_SERVERPREVIEW | Set your prefered chat server preview image relative to /public/img folder | - |
+| APP_SERVERNAME  | Set your prefered chat server name  | "SayText Chat Server" |
+| APP_SERVERTOPIC  | Set your prefered chat server topic  | "Welcome to this SayText Chat server" |
+| APP_SERVERPREVIEW | Set your prefered chat server preview image relative to /public/img folder | "preview.png" |
 | APP_DELAY_FETCH  | Duration in milliseconds when to check for new chat content  | 10000 |
 | APP_DELAY_ONLINE  | Duration in milliseconds when to check for amount of people online  | 10000 |
-| APP_RESOURCEHOST  | Set the resource provider URL for docker deployment  | - |
+| APP_RESOURCEHOST  | Set the resource provider URL for docker deployment  | "https://resources.saytextchat.com" |
 | APP_DEBUG  | Enable or disable app debug mode  | true |
 | APP_UPDATEDEPS  | Set to true if composer packages shall be updated upon container start  | false |
 | APP_TIMEZONE  | Set your prefered time zone  | UTC |
@@ -143,4 +132,8 @@ This section covers all available app settings with default values.
 
 ## License
 
-MIT. Please see [LICENSE.TXT](LICENSE.txt) for more information.
+This project is maintained under the MIT license. Please see [LICENSE.TXT](LICENSE.txt) for more information.
+
+## Disclaimer
+
+This project is fan-made, and is not affiliated with Valve Corporation or any of their properties.
