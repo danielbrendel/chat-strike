@@ -82,7 +82,10 @@ The recommended way to install the project is using Docker.
 
 2. Edit your prefered settings in the `docker-compose.yml`
 
-3. Copy related sound files to the directories `/public/snd` and `/public/snd/voice`.
+3. Copy the required assets to their belonging directories (or specify `APP_RESOURCEHOST` for automatical deployment):
+    - Background images: `/public/img/backgrounds`
+    - Icon assets: `/public/img/icons`
+    - Sound files: `/public/snd` and `/public/snd/voice`
 
 4. Build the image
     ```bash
@@ -112,8 +115,11 @@ This section covers all available app settings with default values.
 
 | Setting  | Description | Default |
 | ------------- | ------------- | ----- |
+| APP_SERVERNAME  | Set your prefered chat server name  | - |
+| APP_SERVERTOPIC  | Set your prefered chat server topic  | - |
 | APP_DELAY_FETCH  | Duration in milliseconds when to check for new chat content  | 10000 |
 | APP_DELAY_ONLINE  | Duration in milliseconds when to check for amount of people online  | 10000 |
+| APP_RESOURCEHOST  | Set the resource provider URL for docker deployment  | - |
 | APP_DEBUG  | Enable or disable app debug mode  | true |
 | APP_UPDATEDEPS  | Set to true if composer packages shall be updated upon container start  | false |
 | APP_TIMEZONE  | Set your prefered time zone  | UTC |

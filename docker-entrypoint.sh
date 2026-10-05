@@ -4,16 +4,22 @@
 DEFAULT_APP_DEBUG=true
 DEFAULT_APP_UPDATEDEPS=false
 DEFAULT_APP_TIMEZONE="UTC"
+DEFAULT_APP_SERVERNAME=""
+DEFAULT_APP_SERVERTOPIC=""
 DEFAULT_APP_DELAY_FETCH=10000
 DEFAULT_APP_DELAY_ONLINE=10000
+DEFAULT_APP_RESOURCEHOST=""
 DEFAULT_LOG_ENABLE=true
 
 # Use environment variables if provided, otherwise use defaults
 APP_DEBUG=${APP_DEBUG:-$DEFAULT_APP_DEBUG}
 APP_UPDATEDEPS="${APP_UPDATEDEPS:-$DEFAULT_APP_UPDATEDEPS}"
 APP_TIMEZONE="${APP_TIMEZONE:-$DEFAULT_APP_TIMEZONE}"
+APP_SERVERNAME="${APP_SERVERNAME:-$DEFAULT_APP_SERVERNAME}"
+APP_SERVERTOPIC="${APP_SERVERTOPIC:-$DEFAULT_APP_SERVERTOPIC}"
 APP_DELAY_FETCH=${APP_DELAY_FETCH:-$DEFAULT_APP_DELAY_FETCH}
 APP_DELAY_ONLINE=${APP_DELAY_ONLINE:-$DEFAULT_APP_DELAY_ONLINE}
+APP_RESOURCEHOST="${APP_RESOURCEHOST:-$DEFAULT_APP_RESOURCEHOST}"
 LOG_ENABLE=${LOG_ENABLE:-$DEFAULT_LOG_ENABLE}
 
 # Function to set the desired timezone
@@ -50,8 +56,11 @@ create_environment_file() {
     APP_DEBUG=$APP_DEBUG
     APP_BASEDIR=""
     APP_TIMEZONE="$APP_TIMEZONE"
+    APP_SERVERNAME="$APP_DELAY_FETCH"
+    APP_SERVERTOPIC="$APP_SERVERTOPIC"
     APP_DELAY_FETCH=$APP_DELAY_FETCH
     APP_DELAY_ONLINE=$APP_DELAY_ONLINE
+    APP_RESOURCEHOST="$APP_RESOURCEHOST"
 
     # Session
     SESSION_ENABLE=true
@@ -98,6 +107,35 @@ wait_for_db() {
     echo "Database is available."
 }
 
+# Function to download assets if not already exists
+download_assets() {
+    if [ -n "$APP_RESOURCEHOST" ]; then
+        $bgcount=$(find $(pwd)/public/img/backgrounds -maxdepth 1 -type f | wc -l)
+        if [ "$bgcount" -gt 1 ]; then
+            echo "Downloading and extracting assets_backgrounds.zip..."
+
+            wget -O assets_backgrounds.zip "$APP_RESOURCEHOST/assets_background.zip"
+            unzip assets_backgrounds.zip -d $(pwd)/public/img/backgrounds
+        fi
+
+        $iccount=$(find $(pwd)/public/img/icons -maxdepth 1 -type f | wc -l)
+        if [ "$iccount" -gt 1 ]; then
+            echo "Downloading and extracting assets_icons.zip..."
+
+            wget -O assets_icons.zip "$APP_RESOURCEHOST/assets_icons.zip"
+            unzip assets_icons.zip -d $(pwd)/public/img/icons
+        fi
+
+        $sndcount=$(find $(pwd)/public/snd -maxdepth 1 -type f | wc -l)
+        if [ "$sndcount" -gt 1 ]; then
+            echo "Downloading and extracting assets_sounds.zip..."
+
+            wget -O assets_sounds.zip "$APP_RESOURCEHOST/assets_sounds.zip"
+            unzip assets_sounds.zip -d $(pwd)/public/snd
+        fi
+    fi
+}
+
 # Configure timezone
 configure_timezone
 
@@ -133,6 +171,9 @@ chown -R www-data:www-data /var/www/html/app/logs
 # Set permissions to public folder
 chown -R www-data:www-data /var/www/html/public
 chmod 755 /var/www/html/public
+
+# Download assets if not already exists
+download_assets
 
 # Print informational message
 echo -e "\033[32mThe system is now ready for operation.\033[39m"
