@@ -20,6 +20,14 @@
 				window.chatOnlineDelay = {{ env('APP_DELAY_ONLINE', 10000) }};
 				window.speakBetweenDelay = {{ env('APP_SPEAK_DELAY', 100) }};
 				window.chatMaxBackgrounds = {{ $max_backgrounds ?? 1 }};
+
+				@if (!empty($username))
+				localStorage.setItem('cl_name', '{{ $username }}');
+				@endif
+
+				@if (!empty($userteam))
+				localStorage.setItem('cl_team', '{{ $userteam }}');
+				@endif
 			});
 		</script>
 		<script src="{{ asset('js/app.js', true) }}"></script>

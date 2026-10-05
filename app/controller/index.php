@@ -31,8 +31,17 @@ class IndexController extends BaseController {
 	 */
 	public function index($request)
 	{
+		$username = $request->params()->query('username', '');
+		$userteam = $request->params()->query('team', '');
+
+		if ((!empty($username)) && (!Chat::isNameAvailable($username))) {
+			$username = $username . '-' . substr(md5(random_bytes(55) . date('Y-m-d H:i:s')), 0, 10);
+		}
+
 		return parent::view(['content', 'index'], [
-			'max_backgrounds' => self::MAX_BACKGROUNDS
+			'max_backgrounds' => self::MAX_BACKGROUNDS,
+			'username' => $username,
+			'userteam' => $userteam
 		]);
 	}
 }

@@ -28,12 +28,12 @@
 					</div>
 
 					<div class="chat-strike-actions-settings">
-						<input class="chat-input-element" type="text" placeholder="Choose your name" onchange="localStorage.setItem('cl_name', this.value);"/>
+						<input class="chat-input-element" type="text" placeholder="Choose your name" onchange="localStorage.setItem('cl_name', this.value);" value="{{ ($username ?? '') }}"/>
 
 						<select class="chat-input-element" title="Choose a team" onchange="localStorage.setItem('cl_team', this.value);">
-							<option value="spec" selected>Spectator</option>
-							<option value="t">Terrorists</option>
-							<option value="ct">Counter-Terrorists</option>
+							<option value="spec" {{ (((empty($userteam)) || ($userteam === 'spec')) ? 'selected' : '') }}>Spectator</option>
+							<option value="t" {{ (($userteam === 't') ? 'selected' : '') }}>Terrorists</option>
+							<option value="ct" {{ (($userteam === 'ct') ? 'selected' : '') }}>Counter-Terrorists</option>
 						</select>
 					</div>
 				</div>
