@@ -14,6 +14,7 @@
 
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
+				window.chatServerName = '{{ env('APP_SERVERNAME') }}';
 				window.chatFetchDelay = {{ env('APP_DELAY_FETCH', 10000) }};
 				window.chatOnlineDelay = {{ env('APP_DELAY_ONLINE', 10000) }};
 				window.speakBetweenDelay = {{ env('APP_SPEAK_DELAY', 100) }};

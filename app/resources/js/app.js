@@ -7,6 +7,8 @@ import './../sass/app.scss';
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.chatServerName = 'Server name';
+
 window.chatFetchDelay = 10000;
 window.chatOnlineDelay = 10000;
 window.lastMessageId = null;
@@ -180,7 +182,7 @@ window.addChatMessage = function(user, message, team, style) {
     chat.appendChild(msg);
 
     chat.scrollTop = chat.scrollHeight;
-}
+};
 
 window.addNoticeMessage = function(message, style = 'chat-style-notice') {
     let chat = document.querySelector('.chat-strike-content');
@@ -191,7 +193,7 @@ window.addNoticeMessage = function(message, style = 'chat-style-notice') {
     chat.appendChild(msg);
 
     chat.scrollTop = chat.scrollHeight;
-}
+};
 
 window.netChatMessage = function(user, team, msg) {
     window.ajaxRequest('post', window.location.origin + '/chat/message', { username: user, team: team, message: msg }, function(response) {
@@ -493,9 +495,13 @@ document.addEventListener('DOMContentLoaded', function() {
         tsIcon.src = window.location.origin + '/img/icons/timestamps_' + ((window.showTimestamps) ? 'on' : 'off') + '.png';
     }
 
+    window.addNoticeMessage(window.chatServerName);
+
     const rndnum = window.random(0, window.welcomeMessages.length - 1);
     window.addNoticeMessage(window.welcomeMessages[rndnum].message);
     window.playAudio(window.welcomeMessages[rndnum].sound);
+
+    window.addEmptyMessage();
 
     window.fetchTimer = setInterval(function() {
         window.fetchMessages();
