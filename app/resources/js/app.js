@@ -460,6 +460,23 @@ window.leetspeak = function(msg) {
     return result;
 };
 
+window.toggleUserList = function() {
+    const list = document.querySelector('.chat-strike-right');
+    const content = document.querySelector('.chat-strike-left');
+
+    if (list.style.display === 'none') {
+        list.style.display = 'inline-block';
+        list.style.width = '20%';
+
+        content.style.width = '80%';
+    } else {
+        list.style.display = 'none';
+        list.style.width = '0%';
+
+        content.style.width = '100%';
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     window.chatterName = localStorage.getItem('cl_name');
     window.chatterTeam = localStorage.getItem('cl_team');

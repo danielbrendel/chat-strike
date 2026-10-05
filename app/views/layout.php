@@ -28,6 +28,10 @@
 				@if (!empty($userteam))
 				localStorage.setItem('cl_team', '{{ $userteam }}');
 				@endif
+
+				if (window.innerWidth < 768) {
+					window.toggleUserList();
+				}
 			});
 		</script>
 		<script src="{{ asset('js/app.js', true) }}"></script>

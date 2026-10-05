@@ -2,7 +2,7 @@
 	<div class="chat-strike" style="background-image: url('{{ asset('img/backgrounds/background' . rand(1, $max_backgrounds) . '.png') }}');">
 		<div class="chat-strike-overlay">
 			<div class="chat-strike-left">
-				<div class="chat-strike-online"></div>
+				<div class="chat-strike-online" onclick="window.toggleUserList();"></div>
 
 				<div class="chat-strike-content"></div>
 
