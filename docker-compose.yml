@@ -2,12 +2,14 @@ version: "3.8"
 
 services:
   app:
-    image: danielbrendel/saytext-chat:latest
+    image: ghcr.io/danielbrendel/saytext-chat:latest
     ports:
       - "8080:80"
     volumes:
       - app_logs:/var/www/html/app/logs
       - app_migrate:/var/www/html/app/migrations
+      - app_images:/var/www/html/public/img
+      - app_sounds:/var/www/html/public/snd
     environment:
       APP_SERVERNAME: "SayText Chat Server"
       APP_SERVERTOPIC: "Welcome to this SayText Chat server"
@@ -43,3 +45,5 @@ volumes:
   db_data:
   app_logs:
   app_migrate:
+  app_images:
+  app_sounds:

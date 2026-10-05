@@ -65,6 +65,14 @@ RUN mkdir /tmp/migrations \
  && cp /var/www/html/app/migrations/* /tmp/migrations
 VOLUME ["/var/www/html/app/migrations"]
 
+# Create volume for image assets
+RUN mkdir /tmp/img && cp -r /var/www/html/public/img/. /tmp/img
+VOLUME ["/var/www/html/public/img"]
+
+# Create volume for sound assets
+RUN mkdir /tmp/snd && cp -r /var/www/html/public/snd/. /tmp/snd
+VOLUME ["/var/www/html/public/snd"]
+
 # Copy the Composer dependencies from the first stage
 COPY --from=composer /app/vendor/ /var/www/html/vendor/
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
