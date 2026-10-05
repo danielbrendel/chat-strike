@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    image: danielbrendel/chat-strike:latest
+    image: danielbrendel/saytext-chat:latest
     ports:
       - "8080:80"
     volumes:

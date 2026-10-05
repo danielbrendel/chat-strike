@@ -148,7 +148,7 @@ window.ajaxRequest = function(method, url, data = {}, successfunc = function(dat
 };
 
 window.addChatMessage = function(user, message, team, style) {
-    let chat = document.querySelector('.chat-strike-content');
+    let chat = document.querySelector('.saytext-chat-content');
 
     if (message.content.startsWith('/radio ')) {
         const radio = message.content.substr(message.content.indexOf(' ') + 1);
@@ -186,7 +186,7 @@ window.addChatMessage = function(user, message, team, style) {
 };
 
 window.addNoticeMessage = function(message, style = 'chat-style-notice') {
-    let chat = document.querySelector('.chat-strike-content');
+    let chat = document.querySelector('.saytext-chat-content');
 
     let msg = document.createElement('div');
     msg.classList.add(style);
@@ -207,7 +207,7 @@ window.netChatMessage = function(user, team, msg) {
 };
 
 window.chatMessage = function() {
-    const parent = document.querySelector('.chat-strike-actions');
+    const parent = document.querySelector('.saytext-chat-actions');
     const msg = parent.children[1].children[0].children[0].value;
     const user = parent.children[2].children[0].value;
     const team = parent.children[2].children[1].value;
@@ -246,7 +246,7 @@ window.fetchMessages = function() {
 window.onlineCount = function() {
     window.ajaxRequest('post', window.location.origin + '/chat/online', {}, function(response) {
         if (response.code == 200) {
-            let elem = document.querySelector('.chat-strike-online');
+            let elem = document.querySelector('.saytext-chat-online');
             if (elem) {
                 if (response.count > 1) {
                     elem.innerHTML = `${response.count} chatters`;
@@ -263,12 +263,12 @@ window.onlineCount = function() {
 window.onlineUsers = function() {
     window.ajaxRequest('post', window.location.origin + '/chat/users', {}, function(response) {
         if (response.code == 200) {
-            let elem = document.querySelector('.chat-strike-list');
+            let elem = document.querySelector('.saytext-chat-list');
             if (elem) {
                 elem.innerHTML = '';
 
                 for (let i = 0; i < response.users.length; i++) {
-                    elem.innerHTML += `<div class="chat-strike-list-item">${response.users[i]}</div>`;
+                    elem.innerHTML += `<div class="saytext-chat-list-item">${response.users[i]}</div>`;
                 }
             }
         } else {
@@ -347,7 +347,7 @@ window.playAudio = function(soundfile) {
 };
 
 window.switchBackground = function() {
-    const elem = document.querySelector('.chat-strike');
+    const elem = document.querySelector('.saytext-chat');
     elem.style.backgroundImage = `url('${window.location.origin}/img/backgrounds/background${window.random(1, window.chatMaxBackgrounds)}.png')`;
 };
 
@@ -387,7 +387,7 @@ window.localCommand = function(expression) {
                 localStorage.setItem('s_enable', window.soundEnable);
                 window.addNoticeMessage('Sound is now: ' + ((window.soundEnable) ? 'On' : 'Off'));
 
-                let sndIcon = document.querySelector('#chat-strike-option-sound');
+                let sndIcon = document.querySelector('#saytext-chat-option-sound');
                 if (sndIcon) {
                     sndIcon.src = window.location.origin + '/img/icons/sound_' + ((window.soundEnable) ? 'on' : 'off') + '.png';
                 }
@@ -414,7 +414,7 @@ window.localCommand = function(expression) {
                 localStorage.setItem('cl_timestamps', window.showTimestamps);
                 window.addNoticeMessage('Timestamps are now: ' + ((window.showTimestamps) ? 'On' : 'Off'));
 
-                let tsIcon = document.querySelector('#chat-strike-option-timestamps');
+                let tsIcon = document.querySelector('#saytext-chat-option-timestamps');
                 if (tsIcon) {
                     tsIcon.src = window.location.origin + '/img/icons/timestamps_' + ((window.showTimestamps) ? 'on' : 'off') + '.png';
                 }
@@ -461,8 +461,8 @@ window.leetspeak = function(msg) {
 };
 
 window.toggleUserList = function() {
-    const list = document.querySelector('.chat-strike-right');
-    const content = document.querySelector('.chat-strike-left');
+    const list = document.querySelector('.saytext-chat-right');
+    const content = document.querySelector('.saytext-chat-left');
 
     if (list.style.display === 'none') {
         list.style.display = 'inline-block';
@@ -484,11 +484,11 @@ document.addEventListener('DOMContentLoaded', function() {
     window.showTimestamps = localStorage.getItem('cl_timestamps');
 
     if (window.chatterName !== null) {
-        document.querySelector('.chat-strike-actions-settings').children[0].value = window.chatterName;
+        document.querySelector('.saytext-chat-actions-settings').children[0].value = window.chatterName;
     }
 
     if (window.chatterTeam !== null) {
-        document.querySelector('.chat-strike-actions-settings').children[1].value = window.chatterTeam;
+        document.querySelector('.saytext-chat-actions-settings').children[1].value = window.chatterTeam;
     }
 
     if (window.soundEnable !== null) {
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.soundEnable = 1;
     }
 
-    let sndIcon = document.querySelector('#chat-strike-option-sound');
+    let sndIcon = document.querySelector('#saytext-chat-option-sound');
     if (sndIcon) {
         sndIcon.src = window.location.origin + '/img/icons/sound_' + ((window.soundEnable) ? 'on' : 'off') + '.png';
     }
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.showTimestamps = 0;
     }
 
-    let tsIcon = document.querySelector('#chat-strike-option-timestamps');
+    let tsIcon = document.querySelector('#saytext-chat-option-timestamps');
     if (tsIcon) {
         tsIcon.src = window.location.origin + '/img/icons/timestamps_' + ((window.showTimestamps) ? 'on' : 'off') + '.png';
     }

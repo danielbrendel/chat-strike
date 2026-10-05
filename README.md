@@ -1,4 +1,4 @@
-# Chat-Strike
+# SayText Chat
 
 ## Table of contents
 
@@ -11,7 +11,7 @@
 
 ## Description
 
-Chat-Strike is a simple retro chat-box that you can self-host and embed into a web project (using an iframe). Think of it as a live updated shoutbox that revives the nostalgic gaming times of the old Counter-Strike 1.6 days.
+SayText Chat is a simple retro chat-box that you can self-host and embed into a web project (using an iframe). Think of it as a live updated shoutbox that revives the nostalgic gaming times of the old Counter-Strike 1.6 days.
 
 Note: This is not designed to be directly opened in your browser, but rather to be embedded into your own web project. It will adjust to your iframe / parent container elements in order to keep being responsive. The screenshot shows an example usage in one of my own web projects.
 
@@ -77,7 +77,7 @@ The recommended way to install the project is using Docker.
 
 1. Clone the repository
     ```bash
-    git clone https://github.com/danielbrendel/chat-strike.git
+    git clone https://github.com/danielbrendel/saytext-chat.git
     ```
 
 2. Edit your prefered settings in the `docker-compose.yml`
@@ -89,7 +89,7 @@ The recommended way to install the project is using Docker.
 
 4. Build the image
     ```bash
-    docker buildx build . --platform linux/amd64 --tag danielbrendel/chat-strike:latest --load
+    docker buildx build . --platform linux/amd64 --tag danielbrendel/saytext-chat:latest --load
     ```
 
     **Note:** Choose your platform depending on your environment:

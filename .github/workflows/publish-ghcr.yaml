@@ -15,4 +15,4 @@ jobs:
       - name: Build and push the image
         run: |
           docker login --username danielbrendel --password ${{ secrets.GH_CONTAINER_REGISTRY }} ghcr.io
-          docker buildx build . --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag ghcr.io/danielbrendel/chat-strike:latest --tag ghcr.io/danielbrendel/chat-strike:${{ github.ref_name }} --push
+          docker buildx build . --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag ghcr.io/danielbrendel/saytext-chat:latest --tag ghcr.io/danielbrendel/saytext-chat:${{ github.ref_name }} --push

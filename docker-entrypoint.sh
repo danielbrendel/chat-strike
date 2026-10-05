@@ -49,7 +49,7 @@ create_environment_file() {
     cat <<-EOF >> /var/www/html/.env
 
     # App settings
-    APP_NAME="Chat-Strike"
+    APP_NAME="SayText Chat"
     APP_VERSION=1.0
     APP_AUTHOR="Daniel Brendel"
     APP_CONTACT="daniel@danielbrendel.com"

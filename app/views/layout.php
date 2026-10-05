@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>Chat-Strike</title>
+		<title>{{ ((env('APP_SERVERNAME')) ?? 'SayText Chat') }}</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css', true) }}"/>
 	</head>

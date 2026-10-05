@@ -18,7 +18,7 @@ html, body {
   height: 100%;
 }
 
-.chat-strike {
+.saytext-chat {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -26,20 +26,20 @@ html, body {
   background-position: center;
 }
 
-.chat-strike-overlay {
+.saytext-chat-overlay {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.35);
 }
 
-.chat-strike-left {
+.saytext-chat-left {
   position: relative;
   display: inline-block;
   width: 80%;
   height: 100%;
 }
 
-.chat-strike-right {
+.saytext-chat-right {
   position: absolute;
   display: inline-block;
   top: 0;
@@ -57,7 +57,7 @@ html, body {
   overflow: auto;
 }
 
-.chat-strike-online {
+.saytext-chat-online {
   position: absolute;
   top: 0;
   right: 2px;
@@ -74,7 +74,7 @@ html, body {
   cursor: pointer;
 }
 
-.chat-strike-content {
+.saytext-chat-content {
   position: relative;
   width: 98%;
   height: 81%;
@@ -100,14 +100,14 @@ html, body {
   color: #ffd000;
 }
 
-.chat-strike-actions {
+.saytext-chat-actions {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.chat-strike-actions-message {
+.saytext-chat-actions-message {
   position: relative;
   width: 100%;
 }
@@ -126,67 +126,67 @@ html, body {
   letter-spacing: 0.5px;
 }
 
-.chat-strike-actions-message input {
+.saytext-chat-actions-message input {
   width: 97%;
 }
 
-.chat-strike-actions-settings {
+.saytext-chat-actions-settings {
   position: relative;
   width: 100%;
 }
 
-.chat-strike-actions-settings input {
+.saytext-chat-actions-settings input {
   position: relative;
   width: 68.5%;
 }
 @media screen and (max-width: 399px) {
-  .chat-strike-actions-settings input {
+  .saytext-chat-actions-settings input {
     width: 65.9%;
   }
 }
-.chat-strike-actions-settings input {
+.saytext-chat-actions-settings input {
   padding: 5px;
 }
 
-.chat-strike-actions-settings select {
+.saytext-chat-actions-settings select {
   position: absolute;
   width: 30%;
   right: 1px;
   padding: 5px;
 }
 
-.chat-strike-actions-settings select option {
+.saytext-chat-actions-settings select option {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.chat-strike-list {
+.saytext-chat-list {
   position: relative;
   padding: 5px;
 }
 
-.chat-strike-list-item {
+.saytext-chat-list-item {
   position: relative;
   margin-bottom: 5px;
 }
 
-.chat-strike-options {
+.saytext-chat-options {
   position: absolute;
   top: -42px;
   right: 10px;
 }
 
-.chat-strike-options-item {
+.saytext-chat-options-item {
   position: relative;
   display: inline-block;
   margin-left: 5px;
   cursor: pointer;
 }
 
-.chat-strike-options-item:hover {
+.saytext-chat-options-item:hover {
   transform: scale(1.2);
 }
 
-.chat-strike-options-item img {
+.saytext-chat-options-item img {
   width: 25px;
   height: 25px;
 }
