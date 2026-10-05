@@ -26,6 +26,7 @@ Note: This is not designed to be directly opened in your browser, but rather to 
 - View online users
 - Toggle sound
 - Switch backgrounds
+- API endpoint
 - Responsive design
 - Basic docker setup
 
@@ -117,6 +118,7 @@ This section covers all available app settings with default values.
 | ------------- | ------------- | ----- |
 | APP_SERVERNAME  | Set your prefered chat server name  | - |
 | APP_SERVERTOPIC  | Set your prefered chat server topic  | - |
+| APP_SERVERPREVIEW | Set your prefered chat server preview image relative to /public/img folder | - |
 | APP_DELAY_FETCH  | Duration in milliseconds when to check for new chat content  | 10000 |
 | APP_DELAY_ONLINE  | Duration in milliseconds when to check for amount of people online  | 10000 |
 | APP_RESOURCEHOST  | Set the resource provider URL for docker deployment  | - |

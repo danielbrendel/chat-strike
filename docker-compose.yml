@@ -11,6 +11,7 @@ services:
     environment:
       APP_SERVERNAME: "Testserver"
       APP_SERVERTOPIC: "Welcome to ${APP_SERVERTOPIC}"
+      APP_SERVERPREVIEW: ""
       APP_DELAY_FETCH: 10000
       APP_DELAY_ONLINE: 10000
       APP_RESOURCEHOST: ""
