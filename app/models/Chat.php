@@ -99,6 +99,36 @@ class Chat extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $username
+     * @return bool
+     * @throws \Exception
+     */
+    public static function isNameAvailable($username)
+    {
+        try {
+            if ((!is_string($username)) || (empty($username))) {
+                return false;
+            }
+
+            $tokens = Activity::raw('SELECT * FROM `@THIS` WHERE updated_at >= NOW() - INTERVAL 5 MINUTE');
+            if (!$tokens) {
+                return true;
+            }
+
+            foreach ($tokens as $token) {
+                $chat = static::raw('SELECT * FROM `Chat` WHERE token = ? ORDER BY id DESC LIMIT 1', [$token->get('token')])->first();
+                if (($chat) && (strtolower(trim($chat->get('username'))) == strtolower(trim($username)))) {
+                    return false;
+                }
+            }
+
+            return true;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return void
      * @throws \Exception
      */

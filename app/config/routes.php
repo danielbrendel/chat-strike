@@ -22,5 +22,6 @@ return [
     array('/chat/online', 'ANY', 'chat@online'),
     array('/chat/users', 'ANY', 'chat@users'),
     array('/chat/clear', 'ANY', 'chat@clear'),
+    array('/chat/name/available', 'ANY', 'chat@checkname'),
     array('$404', 'ANY', 'error404@index')
 ];

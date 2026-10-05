@@ -118,6 +118,34 @@ class ChatController extends BaseController {
 	}
 
     /**
+	 * Handles URL: /chat/name/available
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function checkname($request)
+	{
+		try {
+            $username = $request->params()->query('username');
+
+            $status = Chat::isNameAvailable($username);
+
+            return json([
+                'code' => 200,
+                'data' => [
+                    'username' => $username,
+                    'status' => $status
+                ]
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+	}
+
+    /**
 	 * Handles URL: /chat/clear
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
