@@ -92,8 +92,6 @@ Toggle timestamps for chat or check timestamps status
 
 The recommended way to install the project is using Docker.
 
-**WARNING: Currently you have to build the image yourself!**
-
 1. Clone the repository
     ```bash
     git clone https://github.com/danielbrendel/saytext-chat
