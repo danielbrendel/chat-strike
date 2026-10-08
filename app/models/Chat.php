@@ -30,6 +30,7 @@ class Chat extends \Asatru\Database\Model {
     {
         try {
             $token = md5(session_id());
+            $username = trim($username);
 
             if (empty($username)) {
                 throw new \Exception('Empty names are not allowed.');
@@ -51,11 +52,7 @@ class Chat extends \Asatru\Database\Model {
                 throw new \Exception('Your message contains unwanted tokens.');
             }
 
-            $untaken = static::raw('SELECT * FROM `@THIS` WHERE username = ? AND token <> ? ORDER BY id DESC LIMIT 10', [
-                $username, $token
-            ]);
-
-            if (count($untaken) > 0) {
+            if (!static::isNameAvailable($username, $token)) {
                 throw new \Exception('Your name is already taken. Please try again later.');
             }
 
@@ -100,29 +97,28 @@ class Chat extends \Asatru\Database\Model {
 
     /**
      * @param $username
+     * @param $excltok
      * @return bool
      * @throws \Exception
      */
-    public static function isNameAvailable($username)
+    public static function isNameAvailable($username, $excltok = null)
     {
         try {
             if ((!is_string($username)) || (empty($username))) {
                 return false;
             }
 
-            $tokens = Activity::raw('SELECT * FROM `@THIS` WHERE updated_at >= NOW() - INTERVAL 5 MINUTE');
-            if (!$tokens) {
-                return true;
+            if ((is_string($excltok)) && (!empty($excltok))) {
+                $namecount = static::raw('SELECT COUNT(*) AS `count` FROM `@THIS` WHERE username = ? AND token <> ?', [
+                    $username, $excltok
+                ])->first()->get('count');
+            } else {
+                $namecount = static::raw('SELECT COUNT(*) AS `count` FROM `@THIS` WHERE username = ?', [
+                    $username
+                ])->first()->get('count');
             }
-
-            foreach ($tokens as $token) {
-                $chat = static::raw('SELECT * FROM `Chat` WHERE token = ? ORDER BY id DESC LIMIT 1', [$token->get('token')])->first();
-                if (($chat) && (strtolower(trim($chat->get('username'))) == strtolower(trim($username)))) {
-                    return false;
-                }
-            }
-
-            return true;
+            
+            return (!($namecount > 0));
         } catch (\Exception $e) {
             throw $e;
         }
