@@ -118,7 +118,7 @@ class ChatController extends BaseController {
 	}
 
     /**
-	 * Handles URL: /chat/name/available
+	 * Handles URL: /chat/checkname
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
