@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css', true) }}"/>
 	</head>
 	
-	<body>
+	<body style="background-image: url('{{ asset('img/backgrounds/background0.png') }}');">
 		{%content%}
 
 		<script>
