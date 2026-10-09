@@ -31,7 +31,7 @@
 
 ## Description
 
-SayText Chat is a simple self-hostable retro chat app that revives the feeling of playing oldschool CS 1.6.
+SayText Chat is a simple self-hostable retro chat app that revives the feeling of playing oldschool CS 1.6. It works without logins, hence usernames are related to the clients' session token. If someone claimed a username, it will remain claimed until the last chat message by that user is cleared. To automatically clear message history, use the associated cronjob.
 
 ## Features
 
@@ -110,6 +110,12 @@ The recommended way to install the project is using Docker.
     ```
 
 5. The app should now be available on [http://localhost:8080](http://localhost:8080).
+
+You should also set up a cronjob that performs a request on the following endpoint in order to clear messages older than one day. It is suggested to execute this cronjob once per day.
+
+```
+POST /chat/clear
+```
 
 ## Available settings
 

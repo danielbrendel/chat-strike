@@ -21,7 +21,7 @@ return [
     array('/chat/fetch', 'POST', 'chat@fetch'),
     array('/chat/online', 'ANY', 'chat@online'),
     array('/chat/users', 'ANY', 'chat@users'),
-    array('/chat/clear', 'ANY', 'chat@clear'),
+    array('/chat/clear', 'POST', 'chat@clear'),
     array('/chat/checkname', 'ANY', 'chat@checkname'),
     array('/api/status', 'ANY', 'api@status'),
     array('/api/checkname', 'ANY', 'api@checkname'),
