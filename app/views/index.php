@@ -1,3 +1,8 @@
+<div class="headline">
+	<div>{{ env('APP_SERVERNAME', 'Unnamed server') }}</div>
+	<div>{!! env('APP_SERVERTOPIC', 'No server topic set') !!}</div>
+</div>
+
 <div class="container">
 	<div class="saytext-chat" style="background-image: url('{{ asset('img/backgrounds/background' . rand(1, $max_backgrounds) . '.png') }}');">
 		<div class="saytext-chat-overlay">
